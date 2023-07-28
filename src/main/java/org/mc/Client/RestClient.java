@@ -27,7 +27,6 @@ public class RestClient {
 
         try {
             responseString = executeGetCall(endPointURL);
-            int respStatusCode = getStatusCode(responseString);
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

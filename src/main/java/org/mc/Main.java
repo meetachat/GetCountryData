@@ -24,7 +24,6 @@ public class Main {
             //if value is invalid - numeric, Not name or code, etc. print message and end iteration
             if(searchParameter.equals("invalidEntry")) {
                 System.out.println("Please enter a valid value (Name/Code).Exiting application");
-                continueSearch = false;
             }
             // if user input has valid values, get the search value for Country Code
             else {
@@ -35,7 +34,6 @@ public class Main {
                     // check search value for invalid inputs
                     if (!checkUserInput.isCountryCodeValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country code.Exiting application");
-                        continueSearch = false;
                     }
                     else{
                         // if search value is valid, return capital
@@ -50,7 +48,6 @@ public class Main {
                     // check user input for invalid values
                     if (!checkUserInput.isCountryNameValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country name.Exiting application");
-                        continueSearch = false;
                     }
                     else{
                         printCountryInfo(searchParameter,searchParaValue);
