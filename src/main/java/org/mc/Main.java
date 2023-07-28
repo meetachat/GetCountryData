@@ -6,39 +6,48 @@ import java.util.Scanner;
 import java.net.http.HttpResponse;
 
 public class Main {
-
     public static void main(String[] args) {
-        boolean continueSearch = true;
-        RestClient myClient = new RestClient();
+
         CheckUserInput checkUserInput = new CheckUserInput();
+
+        //the condition to execute while loop
+        boolean continueSearch = true;
         Scanner userInput = new Scanner(System.in);
+
         while (continueSearch) {
             String searchParameter, searchParaValue;
+            //Get user input on whether to search by Country or Code
             System.out.println("Would you like to search by country name or code?(Please enter 'Name' or 'Code')");
             searchParameter = userInput.next();
+            //Checking the user input for invalid values
             searchParameter = checkUserInput.validateSearchParaValue(searchParameter);
-            
+            //if value is invalid - numeric, Not name or code, etc. print message and end iteration
             if(searchParameter.equals("invalidEntry")) {
                 System.out.println("Please enter a valid value (Name/Code).Exiting application");
                 continueSearch = false;
-                //break;
             }
+            // if user input has valid values, get the search value for Country Code
             else {
                 if (searchParameter.equals("getByCode")) {
+                    //user input for search value
                     System.out.println("Please enter the Country code: ");
                     searchParaValue = userInput.next();
+                    // check search value for invalid inputs
                     if (!checkUserInput.isCountryCodeValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country code.Exiting application");
                         continueSearch = false;
                     }
                     else{
+                        // if search value is valid, return capital
                         printCountryInfo(searchParameter,searchParaValue);
                     }
 
                 }
+                // if user input has valid values, get the search value for Country Name
                 else if (searchParameter.equals("getByName")) {
                     System.out.println("Please enter the Country name: ");
                     searchParaValue = userInput.next();
+                    // check user input for invalid values
                     if (!checkUserInput.isCountryNameValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country name.Exiting application");
                         continueSearch = false;
@@ -47,10 +56,11 @@ public class Main {
                         printCountryInfo(searchParameter,searchParaValue);
                     }
                 }
-
             }
+            //get user input if user wants to continue.
             System.out.println("Do you want to continue?(enter y/n)");
             String enterAnotherCountry = userInput.next();
+            //Set the control condition for while loop
             continueSearch = enterAnotherCountry.equalsIgnoreCase("y");
         }
         userInput.close();
@@ -65,7 +75,6 @@ public class Main {
         } else{
             System.out.println("Unable to retrieve information about " + searchParaValue);
         }
-
    }
 }
 

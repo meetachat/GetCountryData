@@ -17,7 +17,7 @@ public class RestClient {
         String baseURL = "https://restcountries.com/v3.1";
         String endPointURL;
         HttpResponse<String> responseString = null;
-
+        // Set the end point based on search parameter
         if(searchParameter.equals("getByName")){
             endPointURL = baseURL+"/name/"+searchParaValue+"/?fullText=true";
         }
@@ -36,7 +36,7 @@ public class RestClient {
     }
 
     public HttpResponse<String> executeGetCall(String serviceURL) throws IOException, InterruptedException {
-        System.out.println(serviceURL);
+
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(URI.create(serviceURL))
                 // .header("Content-type","application/json")
@@ -49,7 +49,6 @@ public class RestClient {
     }
 
     public String returnCountryCapital(String responseString) {
-        System.out.println(responseString);
         String updatedResponse = responseString.substring(1, responseString.length()-1);
         JSONObject responseJSON = new JSONObject(updatedResponse);
         JSONArray capitalArr = (JSONArray) responseJSON.get("capital");
