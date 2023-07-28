@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -40,6 +41,7 @@ public class RestClient {
                 .uri(URI.create(serviceURL))
                 // .header("Content-type","application/json")
                 .header("Accept","application/json" )
+                .timeout(Duration.ofSeconds(5))
                 .GET()
                 // .version(HttpClient.Version.HTTP_2)
                 .build();
