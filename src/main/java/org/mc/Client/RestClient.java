@@ -47,6 +47,8 @@ public class RestClient {
         return getResponse;
     }
 
+    //This function parses the response json to get the value of capital
+    //additional methods can be added to get other data like currency, languages, etc.
     public String returnCountryCapital(String responseString) {
         String updatedResponse = responseString.substring(1, responseString.length()-1);
         JSONObject responseJSON = new JSONObject(updatedResponse);
@@ -54,9 +56,7 @@ public class RestClient {
         return capitalArr.get(0).toString();
     }
 
-    public int getStatusCode(HttpResponse<String> responseString){
-        return responseString.statusCode();
-    }
+
 
 
 
