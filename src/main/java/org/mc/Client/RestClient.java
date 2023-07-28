@@ -44,6 +44,8 @@ public class RestClient {
                 // .version(HttpClient.Version.HTTP_2)
                 .build();
         HttpResponse<String> getResponse = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+        //Check for 500 errors
+        isEndPointAvailable(getResponse);
         return getResponse;
     }
 
@@ -54,6 +56,12 @@ public class RestClient {
         JSONObject responseJSON = new JSONObject(updatedResponse);
         JSONArray capitalArr = (JSONArray) responseJSON.get("capital");
         return capitalArr.get(0).toString();
+    }
+
+    public void isEndPointAvailable(HttpResponse<String> getResponse){
+        if(String.valueOf(getResponse.statusCode()).startsWith("5")){
+            throw new RuntimeException("The webservice is unavailable "+getResponse.statusCode());
+        }
     }
 
 
