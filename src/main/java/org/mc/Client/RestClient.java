@@ -39,7 +39,6 @@ public class RestClient {
     }
 
     public HttpResponse<String> executeGetCall(String serviceURL) throws IOException, InterruptedException {
-        System.out.println("Service URL "+serviceURL);
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(URI.create(serviceURL))
                 // .header("Content-type","application/json")
