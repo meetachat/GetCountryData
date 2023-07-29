@@ -15,7 +15,8 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
 
         while (continueSearch) {
-            String searchParameter, searchParaValue;
+            String searchParameter;
+            String searchParaValue = "";
             //Get user input on whether to search by Country or Code
             System.out.println("Would you like to search by country name or code?(Please enter 'Name' or 'Code')");
             searchParameter = userInput.next();
@@ -30,7 +31,7 @@ public class Main {
                 if (searchParameter.equals("getByCode")) {
                     //user input for search value
                     System.out.println("Please enter the Country code: ");
-                    searchParaValue = userInput.next();
+                    searchParaValue = userInput.next().strip();
                     // check search value for invalid inputs
                     if (!checkUserInput.isCountryCodeValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country code.Exiting application");
@@ -44,7 +45,8 @@ public class Main {
                 // if user input has valid values, get the search value for Country Name
                 else if (searchParameter.equals("getByName")) {
                     System.out.println("Please enter the Country name: ");
-                    searchParaValue = userInput.next();
+                    userInput.useDelimiter("\\n");
+                    searchParaValue = userInput.next().strip();
                     // check user input for invalid values
                     if (!checkUserInput.isCountryNameValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country name.Exiting application");

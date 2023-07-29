@@ -20,6 +20,9 @@ public class RestClient {
         HttpResponse<String> responseString = null;
         // Set the end point based on search parameter
         if(searchParameter.equals("getByName")){
+            if(searchParaValue.contains(" ")){
+                searchParaValue=searchParaValue.replace(" ", "%20");
+            }
             endPointURL = baseURL+"/name/"+searchParaValue+"/?fullText=true";
         }
         else {
@@ -36,7 +39,7 @@ public class RestClient {
     }
 
     public HttpResponse<String> executeGetCall(String serviceURL) throws IOException, InterruptedException {
-
+        System.out.println("Service URL "+serviceURL);
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(URI.create(serviceURL))
                 // .header("Content-type","application/json")

@@ -34,7 +34,7 @@ public class CheckUserInput {
             return false;
         }
         // validate that it only has alphabets
-        if(!countryNameValue.matches("[a-zA-Z]*")) {
+        if(!countryNameValue.matches("^\\pL+[\\pL\\pZ\\pP]{0,}")) {
             return false;
         }
         return true;
