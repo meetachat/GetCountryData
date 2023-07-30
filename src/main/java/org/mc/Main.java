@@ -31,7 +31,7 @@ public class Main {
                 if (searchParameter.equals("getByCode")) {
                     //user input for search value
                     System.out.println("Please enter the Country code: ");
-                    searchParaValue = userInput.next().strip();
+                    searchParaValue = userInput.next();
                     // check search value for invalid inputs
                     if (!checkUserInput.isCountryCodeValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country code.Exiting application");
@@ -46,7 +46,7 @@ public class Main {
                 else if (searchParameter.equals("getByName")) {
                     System.out.println("Please enter the Country name: ");
                     userInput.useDelimiter("\\n");
-                    searchParaValue = userInput.next().strip();
+                    searchParaValue = userInput.next();
                     // check user input for invalid values
                     if (!checkUserInput.isCountryNameValid(searchParaValue)) {
                         System.out.println("Invalid value entered for country name.Exiting application");

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Get Country Capital Tests">
+    <test name="Get Capital By Code">
+        <groups>
+            <run>
+                <include name="Get By Country Code"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testngtests.GetCountryAPITests"/>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Get Capital By Name">
+        <groups>
+            <run>
+                <include name="Get By Country Name"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testngtests.GetCountryAPITests"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -6,19 +6,20 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
-
+import org.mc.utilities.CheckUserInput;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 
 public class RestClient {
     HttpClient httpClient = HttpClient.newHttpClient();
-
+    CheckUserInput checkUserInput = new CheckUserInput();
     public HttpResponse<String> getCountryData(String searchParameter, String searchParaValue) {
         String baseURL = "https://restcountries.com/v3.1";
         String endPointURL;
         HttpResponse<String> responseString = null;
         // Set the end point based on search parameter
+        searchParaValue = checkUserInput.cleanUserInput(searchParaValue);
         if(searchParameter.equals("getByName")){
             if(searchParaValue.contains(" ")){
                 searchParaValue=searchParaValue.replace(" ", "%20");

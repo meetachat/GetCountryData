@@ -40,4 +40,7 @@ public class CheckUserInput {
         return true;
     }
 
+    public String cleanUserInput(String userInput){
+        return userInput.strip();
+    }
 }
